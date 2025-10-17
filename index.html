@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureVault - Military-Grade File Encryption</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-blue-600 mb-2">SecureVault</h1>
+            <p class="text-gray-600">Military-Grade File Encryption</p>
+        </header>
+
+        <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-8">
+                <div class="tabs flex justify-center space-x-4 mb-8">
+                    <button id="encryptTab" class="tab-btn active px-4 py-2 rounded-lg font-medium">
+                        <i class="fas fa-lock mr-2"></i>Encrypt
+                    </button>
+                    <button id="decryptTab" class="tab-btn px-4 py-2 rounded-lg font-medium">
+                        <i class="fas fa-unlock-alt mr-2"></i>Decrypt
+                    </button>
+                </div>
+
+                <div id="encryptSection" class="tab-content">
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="fileToEncrypt">
+                            Select File to Encrypt
+                        </label>
+                        <div class="relative border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                            <input type="file" id="fileToEncrypt" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                            <div class="flex flex-col items-center">
+                                <i class="fas fa-cloud-upload-alt text-4xl text-blue-500 mb-2"></i>
+                                <p class="text-gray-600">Drag & drop your file here or click to browse</p>
+                                <p class="text-sm text-gray-500 mt-2" id="selectedFile">No file selected</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="encryptPassword">
+                            Encryption Password
+                        </label>
+                        <div class="relative">
+                            <input type="password" id="encryptPassword" 
+                                   class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                   placeholder="Enter a strong password">
+                            <button id="toggleEncryptPassword" class="absolute right-3 top-2.5 text-gray-500">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1">
+                            <i class="fas fa-info-circle mr-1"></i> Remember this password. You'll need it to decrypt the file.
+                        </p>
+                    </div>
+
+                    <button id="encryptBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200">
+                        <i class="fas fa-lock mr-2"></i>Encrypt File
+                    </button>
+                </div>
+
+                <div id="decryptSection" class="tab-content hidden">
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="fileToDecrypt">
+                            Select Encrypted File (.enc)
+                        </label>
+                        <div class="relative border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                            <input type="file" id="fileToDecrypt" accept=".enc" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                            <div class="flex flex-col items-center">
+                                <i class="fas fa-file-import text-4xl text-green-500 mb-2"></i>
+                                <p class="text-gray-600">Select your encrypted file (.enc)</p>
+                                <p class="text-sm text-gray-500 mt-2" id="selectedEncryptedFile">No file selected</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="decryptPassword">
+                            Decryption Password
+                        </label>
+                        <div class="relative">
+                            <input type="password" id="decryptPassword" 
+                                   class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                   placeholder="Enter the password used for encryption">
+                            <button id="toggleDecryptPassword" class="absolute right-3 top-2.5 text-gray-500">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button id="decryptBtn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200">
+                        <i class="fas fa-unlock-alt mr-2"></i>Decrypt File
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center text-gray-500 text-sm">
+            <p>All encryption/decryption happens in your browser. Your files never leave your computer.</p>
+            <p class="mt-2">Uses AES-256-GCM encryption for maximum security.</p>
+            
+
+    <script src="app.js"></script>
+</body>
+</html>
